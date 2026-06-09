@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puli Sagar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f5f0e8;color:#111;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:#f5f0e8;border-bottom:3px solid #111}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:#111;text-decoration:none}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links li a{display:block;padding:8px 18px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#111;text-decoration:none;border:2px solid transparent;transition:all 0.2s}
+.nav-links li a:hover{background:#111;color:#f5f0e8}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;border-top:3px solid #111;margin-top:65px;overflow:hidden}
+.hero-left{background:#FFDE2E;padding:72px 56px;display:flex;flex-direction:column;justify-content:center;border-right:3px solid #111;position:relative}
+.hero-left::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;background:#111}
+.hero-badge{display:inline-block;background:#111;color:#FFDE2E;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;margin-bottom:32px;width:fit-content}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,10vw,9rem);line-height:0.9;letter-spacing:0.02em;color:#111;margin-bottom:24px}
+.hero-name span{display:block;color:#FF3C3C}
+.hero-desc{font-size:1rem;font-weight:500;color:#333;line-height:1.6;max-width:400px;margin-bottom:40px}
+.hero-btns{display:flex;gap:0}
+.btn-main{background:#111;color:#FFDE2E;padding:16px 32px;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:3px solid #111;transition:all 0.2s}
+.btn-main:hover{background:#FF3C3C;border-color:#FF3C3C;color:#fff}
+.btn-sec{background:transparent;color:#111;padding:16px 32px;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:3px solid #111;border-left:none;transition:all 0.2s}
+.btn-sec:hover{background:#111;color:#f5f0e8}
+
+.hero-right{background:#FF3C3C;padding:72px 56px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.hero-stat-block{background:#111;padding:32px;border:3px solid #111}
+.stat-big{font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:1;color:#FFDE2E}
+.stat-lbl{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f5f0e8;margin-top:4px}
+.hero-stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.stack-pill{background:#FFDE2E;color:#111;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border:2px solid #111}
+.hero-location{font-size:0.8rem;font-weight:600;color:#fff;letter-spacing:0.05em;text-transform:uppercase;opacity:0.85}
+
+/* MARQUEE TICKER */
+.ticker{background:#111;color:#FFDE2E;padding:14px 0;border-top:3px solid #111;border-bottom:3px solid #111;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:ticker 20s linear infinite}
+.ticker-inner span{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;padding:0 40px}
+.ticker-inner span.dot{color:#FF3C3C;padding:0 8px}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{border-bottom:3px solid #111}
+.sec-header{display:flex;align-items:center;gap:0;border-bottom:3px solid #111}
+.sec-num{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;background:#111;color:#FFDE2E;padding:16px 24px;border-right:3px solid #111;letter-spacing:0.05em}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;padding:16px 40px;letter-spacing:0.04em}
+.sec-body{padding:56px 48px}
+
+/* EXPERIENCE */
+#experience .sec-title{background:#FF3C3C;color:#fff;flex:1}
+.exp-grid{display:flex;flex-direction:column;gap:0}
+.exp-card{display:grid;grid-template-columns:240px 1fr;border:3px solid #111;border-bottom:none}
+.exp-card:last-child{border-bottom:3px solid #111}
+.exp-meta{background:#FFDE2E;padding:32px 28px;border-right:3px solid #111;display:flex;flex-direction:column;gap:8px}
+.exp-company{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.04em;line-height:1}
+.exp-period{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-top:4px}
+.exp-role-tag{display:inline-block;background:#111;color:#FFDE2E;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;margin-top:8px;width:fit-content}
+.exp-content{padding:32px 36px;background:#fff}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:12px}
+.exp-points li{font-size:0.9rem;line-height:1.65;color:#333;padding-left:24px;position:relative}
+.exp-points li::before{content:'';position:absolute;left:0;top:10px;width:10px;height:10px;background:#FF3C3C;border-radius:50%}
+
+/* SKILLS */
+#skills .sec-title{background:#7C4DFF;color:#fff;flex:1}
+.skills-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid #111;border-right:none;border-bottom:none}
+.skill-box{border-right:3px solid #111;border-bottom:3px solid #111;padding:36px 32px;background:#fff;transition:background 0.2s}
+.skill-box:hover{background:#FFDE2E}
+.skill-icon{font-size:2.2rem;margin-bottom:12px}
+.skill-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.04em;margin-bottom:16px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.s-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border:2px solid #111;background:transparent;transition:background 0.2s}
+.skill-box:hover .s-tag{background:#fff}
+
+/* PROJECTS */
+#projects .sec-title{background:#00C853;color:#111;flex:1}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid #111;border-right:none;border-bottom:none}
+.proj-card{border-right:3px solid #111;border-bottom:3px solid #111;padding:0;overflow:hidden;position:relative;background:#fff;transition:transform 0.2s}
+.proj-card:hover{transform:scale(1.01);z-index:2}
+.proj-color-bar{height:8px}
+.proj-inner{padding:36px 32px}
+.proj-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;color:#eee;margin-bottom:8px}
+.proj-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.03em;margin-bottom:12px;color:#111}
+.proj-desc{font-size:0.85rem;color:#555;line-height:1.65;margin-bottom:20px}
+.proj-tools{display:flex;flex-wrap:wrap;gap:6px}
+.p-tag{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;color:#fff}
+
+/* EDUCATION + CERTS */
+#education .sec-title{background:#FF6D00;color:#fff;flex:1}
+.edu-certs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid #111;border-right:none;border-bottom:none}
+.edu-col{border-right:3px solid #111;border-bottom:3px solid #111;padding:36px 32px;display:flex;flex-direction:column;gap:20px}
+.edu-item{border-left:5px solid #FFDE2E;padding-left:20px}
+.edu-deg{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.03em;color:#111}
+.edu-school{font-size:0.8rem;font-weight:600;color:#FF3C3C;margin:4px 0}
+.edu-meta{font-size:0.75rem;color:#777;display:flex;justify-content:space-between;margin-top:8px}
+.edu-score{background:#00C853;color:#fff;font-size:0.68rem;font-weight:700;letter-spacing:0.06em;padding:3px 10px}
+.cert-col{border-right:3px solid #111;border-bottom:3px solid #111;padding:36px 32px;display:flex;flex-direction:column;gap:12px}
+.cert-row{display:flex;align-items:center;gap:16px;padding:14px 16px;border:2px solid #111;background:#fff;transition:background 0.2s}
+.cert-row:hover{background:#FFDE2E}
+.cert-dot{width:10px;height:10px;border-radius:50%;background:#7C4DFF;flex-shrink:0}
+.cert-name{font-size:0.82rem;font-weight:700;color:#111}
+.cert-by{font-size:0.7rem;font-weight:500;color:#777;display:block;margin-top:2px}
+
+/* CONTACT */
+#contact{background:#111;color:#f5f0e8;border-bottom:none}
+#contact .sec-num{background:#FFDE2E;color:#111;border-right:3px solid #FFDE2E}
+#contact .sec-title{background:#111;color:#FFDE2E;flex:1;border-bottom:3px solid #333}
+.contact-body{padding:80px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.contact-cta{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5.5rem);line-height:0.9;letter-spacing:0.02em;color:#fff}
+.contact-cta span{color:#FFDE2E;display:block}
+.contact-email{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:#FFDE2E;text-decoration:none;display:block;letter-spacing:0.04em;transition:color 0.2s;margin:24px 0}
+.contact-email:hover{color:#FF3C3C}
+.contact-links{display:flex;flex-direction:column;gap:12px}
+.c-link{display:flex;align-items:center;gap:16px;padding:16px 20px;border:2px solid #333;color:#f5f0e8;text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s}
+.c-link:hover{border-color:#FFDE2E;color:#FFDE2E}
+.c-link-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+
+/* FOOTER */
+footer{background:#111;color:#555;border-top:2px solid #222;padding:20px 48px;display:flex;justify-content:space-between;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+
+/* ANIMATE ON SCROLL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  section .sec-body,#skills .sec-body,#projects .sec-body,#education .sec-body{padding:32px 20px}
+  .sec-header .sec-title{font-size:1.8rem}
+  .exp-card{grid-template-columns:1fr}
+  .exp-meta{border-right:none;border-bottom:3px solid #111}
+  .skills-bento,.proj-grid,.edu-certs{grid-template-columns:1fr}
+  .contact-body{grid-template-columns:1fr;gap:40px}
+  footer{padding:16px 20px;flex-direction:column;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">PULI SAGAR</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Open to Opportunities</div>
+    <h1 class="hero-name">PULI<span>SAGAR</span></h1>
+    <p class="hero-desc">Salesforce Developer &amp; Data Engineer who builds enterprise automation, intelligent pipelines, and predictive ML systems that drive real business impact.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-main">See My Work</a>
+      <a href="#contact" class="btn-sec">Hire Me</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-location">📍 Andhra Pradesh, India</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+      <div class="hero-stat-block">
+        <div class="stat-big">8.89</div>
+        <div class="stat-lbl">B.Tech CGPA</div>
+      </div>
+      <div class="hero-stat-block" style="background:#FF3C3C">
+        <div class="stat-big" style="color:#fff">2+</div>
+        <div class="stat-lbl">Years Exp.</div>
+      </div>
+      <div class="hero-stat-block" style="background:#7C4DFF">
+        <div class="stat-big" style="color:#fff">6</div>
+        <div class="stat-lbl">Certifications</div>
+      </div>
+      <div class="hero-stat-block" style="background:#00C853">
+        <div class="stat-big" style="color:#fff">4</div>
+        <div class="stat-lbl">Projects</div>
+      </div>
+    </div>
+    <div class="hero-stack">
+      <span class="stack-pill">Salesforce</span>
+      <span class="stack-pill">LWC</span>
+      <span class="stack-pill">Apex</span>
+      <span class="stack-pill">Azure Fabric</span>
+      <span class="stack-pill">PySpark</span>
+      <span class="stack-pill">Java</span>
+      <span class="stack-pill">Python</span>
+      <span class="stack-pill">ML</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Salesforce Developer</span><span class="dot">✦</span>
+    <span>Data Engineer</span><span class="dot">✦</span>
+    <span>Java Backend</span><span class="dot">✦</span>
+    <span>Machine Learning</span><span class="dot">✦</span>
+    <span>Azure Fabric</span><span class="dot">✦</span>
+    <span>Education Cloud</span><span class="dot">✦</span>
+    <span>LWC Expert</span><span class="dot">✦</span>
+    <span>Salesforce Developer</span><span class="dot">✦</span>
+    <span>Data Engineer</span><span class="dot">✦</span>
+    <span>Java Backend</span><span class="dot">✦</span>
+    <span>Machine Learning</span><span class="dot">✦</span>
+    <span>Azure Fabric</span><span class="dot">✦</span>
+    <span>Education Cloud</span><span class="dot">✦</span>
+    <span>LWC Expert</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Work Experience</span>
+  </div>
+  <div class="sec-body" style="padding:0">
+    <div class="exp-grid">
+
+      <div class="exp-card reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Thought<br>focus</div>
+          <div class="exp-period">Jul 2025 — Present</div>
+          <span class="exp-role-tag">Data Engineer &amp; Java Dev</span>
+          <div style="font-size:0.72rem;color:#666;margin-top:8px;font-weight:600">Remote</div>
+        </div>
+        <div class="exp-content">
+          <ul class="exp-points">
+            <li>Building high-performance Java backend services and REST APIs supporting enterprise-grade applications.</li>
+            <li>Engineering scalable data solutions using Microsoft Azure Fabric — Data Factory and Synapse — for large-scale ingestion and transformation.</li>
+            <li>Constructing end-to-end data pipelines with quality checks and reliable delivery within the Azure ecosystem.</li>
+            <li>Operating in a dual-role capacity as both Backend Developer and Data Engineer, delivering full-stack data solutions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-meta" style="background:#FF3C3C">
+          <div class="exp-company" style="color:#fff">Gyan<br>Sys</div>
+          <div class="exp-period" style="color:rgba(255,255,255,0.7)">Jan 2025 — Jun 2025</div>
+          <span class="exp-role-tag" style="background:#fff;color:#FF3C3C">Salesforce Developer</span>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.7);margin-top:8px;font-weight:600">Bangalore, India</div>
+        </div>
+        <div class="exp-content">
+          <ul class="exp-points">
+            <li>Delivered end-to-end Salesforce solutions using declarative (Flows, Process Builder) and programmatic (Apex, LWC/Aura) tools.</li>
+            <li>Specialized in Salesforce Education Cloud — customized EDA to streamline student recruitment, admissions, and success workflows.</li>
+            <li>Developed reusable LWC and Aura components for modernized, high-engagement user interfaces.</li>
+            <li>Managed complex security setups (Profiles, Permission Sets, Sharing Rules) and built impactful Reports &amp; Dashboards for stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <span class="sec-title">Skills &amp; Tech Stack</span>
+  </div>
+  <div class="sec-body" style="padding:0">
+    <div class="skills-bento">
+
+      <div class="skill-box reveal">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">Salesforce</div>
+        <div class="skill-tags">
+          <span class="s-tag">Apex</span><span class="s-tag">LWC</span><span class="s-tag">SOQL</span>
+          <span class="s-tag">Flows</span><span class="s-tag">Aura</span><span class="s-tag">Education Cloud</span>
+          <span class="s-tag">Experience Cloud</span>
+        </div>
+      </div>
+
+      <div class="skill-box reveal">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Machine Learning</div>
+        <div class="skill-tags">
+          <span class="s-tag">Scikit-learn</span><span class="s-tag">Pandas</span>
+          <span class="s-tag">NumPy</span><span class="s-tag">Matplotlib</span>
+          <span class="s-tag">Seaborn</span><span class="s-tag">PySpark</span>
+        </div>
+      </div>
+
+      <div class="skill-box reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Cloud &amp; Data</div>
+        <div class="skill-tags">
+          <span class="s-tag">Azure Fabric</span><span class="s-tag">Databricks</span>
+          <span class="s-tag">Data Factory</span><span class="s-tag">Airflow</span>
+          <span class="s-tag">Power BI</span><span class="s-tag">Synapse</span>
+        </div>
+      </div>
+
+      <div class="skill-box reveal">
+        <div class="skill-icon">💻</div>
+        <div class="skill-name">Languages</div>
+        <div class="skill-tags">
+          <span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">SQL</span>
+          <span class="s-tag">C</span><span class="s-tag">HTML</span><span class="s-tag">CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-box reveal">
+        <div class="skill-icon">🔧</div>
+        <div class="skill-name">Backend &amp; Frameworks</div>
+        <div class="skill-tags">
+          <span class="s-tag">Spring Boot</span><span class="s-tag">Flask</span>
+          <span class="s-tag">REST APIs</span><span class="s-tag">REST Assured</span>
+          <span class="s-tag">Postman</span>
+        </div>
+      </div>
+
+      <div class="skill-box reveal">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">Databases &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="s-tag">Oracle</span><span class="s-tag">MySQL</span>
+          <span class="s-tag">Git</span><span class="s-tag">GitHub</span>
+          <span class="s-tag">BitBucket</span><span class="s-tag">IntelliJ</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <span class="sec-title">Featured Projects</span>
+  </div>
+  <div class="sec-body" style="padding:0">
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-color-bar" style="background:#7C4DFF"></div>
+        <div class="proj-inner">
+          <div class="proj-num">01</div>
+          <div class="proj-title">Educational Course Management</div>
+          <p class="proj-desc">Built a complete student enrollment and tracking system on Salesforce Education Cloud, automating recruitment, admissions, and success workflows with custom Apex and LWC interfaces.</p>
+          <div class="proj-tools">
+            <span class="p-tag" style="background:#7C4DFF">Education Cloud</span>
+            <span class="p-tag" style="background:#7C4DFF">LWC</span>
+            <span class="p-tag" style="background:#7C4DFF">Apex</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-color-bar" style="background:#FF3C3C"></div>
+        <div class="proj-inner">
+          <div class="proj-num">02</div>
+          <div class="proj-title">Diabetes Prediction System</div>
+          <p class="proj-desc">Designed a predictive health analytics tool using SVM and Logistic Regression, achieving over 85% accuracy on real-world datasets for early diabetes detection. Deployed via Flask API.</p>
+          <div class="proj-tools">
+            <span class="p-tag" style="background:#FF3C3C">SVM</span>
+            <span class="p-tag" style="background:#FF3C3C">Logistic Regression</span>
+            <span class="p-tag" style="background:#FF3C3C">Scikit-learn</span>
+            <span class="p-tag" style="background:#FF3C3C">Flask</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-color-bar" style="background:#FFDE2E"></div>
+        <div class="proj-inner">
+          <div class="proj-num">03</div>
+          <div class="proj-title">Diamond Price Prediction</div>
+          <p class="proj-desc">Built and fine-tuned a Random Forest + Gradient Boosting ensemble model to predict diamond prices. Achieved an R² score of 0.92 on test data through strong feature engineering.</p>
+          <div class="proj-tools">
+            <span class="p-tag" style="background:#b5a000">Random Forest</span>
+            <span class="p-tag" style="background:#b5a000">Gradient Boosting</span>
+            <span class="p-tag" style="background:#b5a000">Pandas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-color-bar" style="background:#00C853"></div>
+        <div class="proj-inner">
+          <div class="proj-num">04</div>
+          <div class="proj-title">Sentiment Analysis — Azure Pipeline</div>
+          <p class="proj-desc">Designed an end-to-end sentiment analysis pipeline on Azure Fabric using PySpark and Databricks to process text at scale. Visualized sentiment trends in Power BI dashboards.</p>
+          <div class="proj-tools">
+            <span class="p-tag" style="background:#00C853">Azure Fabric</span>
+            <span class="p-tag" style="background:#00C853">PySpark</span>
+            <span class="p-tag" style="background:#00C853">Databricks</span>
+            <span class="p-tag" style="background:#00C853">Power BI</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section id="education">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <span class="sec-title">Education &amp; Certifications</span>
+  </div>
+  <div class="sec-body" style="padding:0">
+    <div class="edu-certs">
+
+      <div class="edu-col reveal">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#777;margin-bottom:8px">Academic Background</div>
+        <div class="edu-item">
+          <div class="edu-deg">B.Tech — Computer Science</div>
+          <div class="edu-school">NIST University, Berhampur, Odisha</div>
+          <div class="edu-meta">
+            <span>Dec 2021 — Mar 2025</span>
+            <span class="edu-score">CGPA: 8.89</span>
+          </div>
+        </div>
+        <div class="edu-item" style="border-left-color:#FF3C3C">
+          <div class="edu-deg">Intermediate — Class XII</div>
+          <div class="edu-school">Sri Basara Junior College, Visakhapatnam</div>
+          <div class="edu-meta">
+            <span>Jun 2019 — Mar 2021</span>
+            <span class="edu-score" style="background:#FF3C3C">CGPA: 9.69</span>
+          </div>
+        </div>
+        <div class="edu-item" style="border-left-color:#7C4DFF">
+          <div class="edu-deg">Matriculation — Class X</div>
+          <div class="edu-school">Ravindra Bharathi School, Sompeta</div>
+          <div class="edu-meta">
+            <span>Mar 2021</span>
+            <span class="edu-score" style="background:#7C4DFF">CGPA: 9.8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-col reveal">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#777;margin-bottom:8px">Certifications</div>
+        <div class="cert-row">
+          <div class="cert-dot"></div>
+          <div><div class="cert-name">Salesforce AI Associate</div><span class="cert-by">Salesforce</span></div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-dot" style="background:#FF3C3C"></div>
+          <div><div class="cert-name">Agentforce Specialist</div><span class="cert-by">Salesforce</span></div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-dot" style="background:#FF6D00"></div>
+          <div><div class="cert-name">PWC Salesforce Launchpad</div><span class="cert-by">PricewaterhouseCoopers</span></div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-dot" style="background:#00C853"></div>
+          <div><div class="cert-name">Database Management System</div><span class="cert-by">NPTEL</span></div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-dot" style="background:#FFDE2E"></div>
+          <div><div class="cert-name">Python for Data Science</div><span class="cert-by">NPTEL</span></div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-dot" style="background:#555"></div>
+          <div><div class="cert-name">Python (Basics)</div><span class="cert-by">HackerRank</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-header" style="border-bottom:3px solid #333">
+    <span class="sec-num">05</span>
+    <span class="sec-title">Let's Connect</span>
+  </div>
+  <div class="contact-body">
+    <div>
+      <div class="contact-cta">LET'S<span>BUILD</span>SOMETHING.</div>
+      <a href="mailto:sagarpuli447@gmail.com" class="contact-email">sagarpuli447@gmail.com</a>
+      <div style="font-size:0.8rem;color:#777;font-weight:600;letter-spacing:0.05em">+91 62819 54372 · Andhra Pradesh, India</div>
+    </div>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/puli-sagar" target="_blank" class="c-link">
+        <div class="c-link-icon" style="background:#0077B5">in</div>
+        LinkedIn Profile
+      </a>
+      <a href="https://github.com/sagar9012" target="_blank" class="c-link">
+        <div class="c-link-icon" style="background:#333;color:#fff;font-size:0.9rem;font-weight:700">GH</div>
+        GitHub — sagar9012
+      </a>
+      <a href="mailto:sagarpuli447@gmail.com" class="c-link">
+        <div class="c-link-icon" style="background:#EA4335;color:#fff;font-size:0.85rem;font-weight:700">@</div>
+        Send Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Puli Sagar</span>
+  <span>Salesforce · Data · ML</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
